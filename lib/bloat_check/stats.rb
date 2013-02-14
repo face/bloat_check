@@ -4,7 +4,7 @@ module BloatCheck
   class Stats < KeyStruct.reader(:memory, :counts, :time)
 
     def to_s
-      "TIME=#{time.is_a?(Numeric) ? "#{time.round(1)} sec" : time} MEM=#{memory} OBJ: #{counts.sort_by(&:last).reverse[0...5].map(&it.join('>')).join(' ')}"
+      "TIME=#{time.is_a?(Numeric) ? "#{time.round(1)} sec" : time} MEM=#{memory} OBJ: #{counts.sort_by(&:last).reverse[0...5].map{|it| it.join('>')}.join(' ')}"
     end
 
     def log(prefix="")
